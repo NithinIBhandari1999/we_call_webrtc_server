@@ -1,7 +1,12 @@
 const ACTIONS = {
+    SERVER_ROOM_JOINED: 'socket_ROOM_JOINED',
+    CLIENT_ROOM_JOINED_BRODCAST: 'CLIENT_ROOM_JOINED_BRODCAST',
+
+    SEND_OFFER: 'SEND_OFFER',
+    SEND_ANSWER: 'SEND_ANSWER',
+
     OFFER: 'offer',
     ANSWER: 'answer',
-    ROOM_JOINED: 'socket_ROOM_JOINED',
 };
 
 export default ACTIONS;
