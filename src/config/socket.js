@@ -177,13 +177,31 @@ const init = async (server) => {
                 }
             });
 
+            socket.on(constantSocketActions.REQUEST_OFFER, (payload) => {
+                try {
+                    console.log('TYPE: ', constantSocketActions.REQUEST_OFFER);
+                    console.log('payload: ', payload);
+
+
+
+                    let sendSocketId = payload.socketIdRemote;
+
+                    io.to(sendSocketId).emit(
+                        constantSocketActions.REQUEST_OFFER,
+                        { ...payload }
+                    );
+
+                } catch (error) {
+                    console.error(error);
+                }
+            });
+
             socket.on(constantSocketActions.SEND_OFFER, (payload) => {
-                // TODO refactor
                 try {
                     console.log('TYPE: ', constantSocketActions.SEND_OFFER);
                     console.log('payload: ', payload);
 
-                    let sendSocketId = payload.socketIdRemote;
+                    let sendSocketId = payload.socketIdLocal;
 
                     io.to(sendSocketId).emit(constantSocketActions.SEND_OFFER, { ...payload });
 
@@ -198,7 +216,7 @@ const init = async (server) => {
                     console.log('TYPE: ', constantSocketActions.SEND_ANSWER);
                     // console.log(payload);
 
-                    let sendSocketId = payload.socketIdLocal;
+                    let sendSocketId = payload.socketIdRemote;
 
                     io.to(sendSocketId).emit(constantSocketActions.SEND_ANSWER, { ...payload });
                 } catch (error) {
