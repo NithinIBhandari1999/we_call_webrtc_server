@@ -181,7 +181,7 @@ const init = async (server) => {
                 // TODO refactor
                 try {
                     console.log('TYPE: ', constantSocketActions.SEND_OFFER);
-                    // console.log('payload: ', payload);
+                    console.log('payload: ', payload);
 
                     let sendSocketId = payload.socketIdRemote;
 
